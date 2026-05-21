@@ -37,7 +37,7 @@ public class Main {
         try {
             Price prixInvalide = new Price(-5000, "XOF");
         } catch (InventoryException e) {
-            System.err.println("🔥 Blocage du prix négatif : " + e.getMessage());
+            System.err.println(" Blocage du prix négatif : " + e.getMessage());
         }
     }
 }
