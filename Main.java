@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args) {
        ProductRepository inventory = new ProductRepositoryImp();
 
-        System.out.println("=== 📦 GESTION DES STOCKS DAKARDROP (JAVA RECORDS & DDD) ===");
+        System.out.println("=== GESTION DES STOCKS DAKARDROP (JAVA RECORDS & DDD) ===");
 
         Sku skuGadget = new Sku("dkrgadget99");
         Price prix1 = new Price(12500);
@@ -21,23 +21,23 @@ public class Main {
         System.out.println("SKU Formaté : " + product1.getSku().value());
         System.out.println("Prix de vente : " + product1.getPrice().amount() + " " + product1.getPrice().currency());
 
-        System.out.println("\n--- 🚨 Vérification des alertes logistiques ---");
+        System.out.println("\n--- Vérification des alertes logistiques ---");
         inventory.findLowStockProducts().forEach(p -> {
-            System.out.println("⚠️ REAPPROVISIONNEMENT REQUIS : " + p.getName() + " (Stock actuel: " + p.getStockQuantity() + ")");
+            System.out.println(" REAPPROVISIONNEMENT REQUIS : " + p.getName() + " (Stock actuel: " + p.getStockQuantity() + ")");
         });
 
-        System.out.println("\n--- 🛍️ Tentative de livraison urgente de 5 Ring Lights ---");
+        System.out.println("\n--- Tentative de livraison urgente de 5 Ring Lights ---");
         try {
             product1.decreaseStock(5);
         } catch (InventoryException e) {
-            System.err.println("🔥 Erreur interceptée avec succès : " + e.getMessage());
+            System.err.println( " Erreur interceptée avec succès : " + e.getMessage());
         }
 
-        System.out.println("\n--- 🛑 Tentative de création d'un prix frauduleux ---");
+        System.out.println("\n--- Tentative de création d'un prix frauduleux ---");
         try {
             Price prixInvalide = new Price(-5000, "XOF");
         } catch (InventoryException e) {
-            System.err.println("🔥 Blocage du prix négatif : " + e.getMessage());
+            System.err.println(" Blocage du prix négatif : " + e.getMessage());
         }
     }
 }
